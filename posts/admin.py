@@ -1,3 +1,38 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-# Register your models here.
+from .models import Post, PostTag, Tag
+
+"""Register your models here."""
+
+
+@admin.register(Post)
+class PostModelAdmin(admin.ModelAdmin):
+    """
+    Assignee : 상백
+
+    Post 모델을 어드민 사이트에 설정합니다.
+    """
+
+    list_display = ("id", "title", "writer", "content", "created_at", "updated_at", "is_deleted")
+
+
+@admin.register(Tag)
+class TagModelAdmin(admin.ModelAdmin):
+    """
+    Assignee : 상백
+
+    Tag 모델을 어드민 사이트에 설정합니다.
+    """
+
+    list_display = ("id", "name")
+
+
+@admin.register(PostTag)
+class PostTagModelAdmin(admin.ModelAdmin):
+    """
+    Assignee : 상백
+
+    PostTag 모델을 어드민 사이트에 설정합니다.
+    """
+
+    list_display = ("id", "post", "tag")
