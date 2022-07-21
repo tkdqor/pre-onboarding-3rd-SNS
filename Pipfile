@@ -11,6 +11,7 @@ black = "*"
 flake8 = "*"
 pre-commit = "*"
 djangorestframework-simplejwt = "*"
+django-ipware = "*"
 
 [dev-packages]
 
