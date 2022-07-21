@@ -22,3 +22,16 @@ class PostsCreateSerializer(serializers.ModelSerializer):
         model = Post
         fields = ("title", "writer", "content", "created_at", "updated_at", "is_deleted", "hashtags", "views")
         read_only_fields = ["writer", "created_at", "updated_at", "is_deleted", "views"]
+
+
+class PostsRecordSerializer(serializers.ModelSerializer):
+    """
+    Assignee : 상백
+
+    게시글을 수정하는 시리얼라이저입니다.
+    """
+
+    class Meta:
+        model = Post
+        fields = ("title", "writer", "content", "created_at", "updated_at", "is_deleted", "hashtags", "views")
+        read_only_fields = ["writer", "created_at", "updated_at", "is_deleted", "views"]
