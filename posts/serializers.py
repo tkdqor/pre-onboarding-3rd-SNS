@@ -28,10 +28,16 @@ class PostsRecordSerializer(serializers.ModelSerializer):
     """
     Assignee : 상백
 
-    게시글을 수정하는 시리얼라이저입니다.
+    게시글 상세보기, 수정, 삭제 및 복구 관련 시리얼라이저입니다.
     """
+
+    writer = serializers.SerializerMethodField(read_only=True)
+
+    def get_writer(self, obj):
+        writer = obj.writer.email
+        return writer
 
     class Meta:
         model = Post
-        fields = ("title", "writer", "content", "created_at", "updated_at", "is_deleted", "hashtags", "views")
-        read_only_fields = ["writer", "created_at", "updated_at", "is_deleted", "views"]
+        fields = ("id", "title", "writer", "content", "created_at", "updated_at", "is_deleted", "hashtags", "views")
+        read_only_fields = ["id", "writer", "created_at", "updated_at", "is_deleted", "views"]

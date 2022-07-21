@@ -1,9 +1,9 @@
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
+from config.permissions import IsOwner
 from posts.serializers import PostsCreateSerializer, PostsRecordSerializer
 
 from .models import Post
@@ -26,7 +26,7 @@ class PostsView(APIView):
     context 딕셔너리로 token 인증된 작성자 객체를 보내주어 클라이언트가 작성자 id를 입력하지 않게 설정했습니다.
     """
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwner]
     serializer = PostsCreateSerializer
 
     """JWT 인증방식 클래스 지정하기"""
@@ -48,16 +48,17 @@ class PostsView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# url : PUT,PATCH api/v1/posts/<post_id>
+# url : GET,PUT,PATCH api/v1/posts/<post_id>
 class PostView(APIView):
     """
     Assignee : 상백
 
+    GET : 게시글 상세보기를 수행하는 메서드입니다.
     PUT : 게시글을 수정하는 메서드입니다.
     PATCH : 게시글을 삭제 및 복구하는 메서드입니다.
     """
 
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsOwner]
     serializer = PostsRecordSerializer
 
     """JWT 인증방식 클래스 지정하기"""
@@ -81,6 +82,27 @@ class PostView(APIView):
 
         self.check_object_permissions(self.request, object)
         return object
+
+    def get(self, request, post_id):
+        """
+        Assignee : 상백
+
+        post_id : int
+
+        게시글 상세보기를 위한 메서드입니다.
+        횟수 제한 없이 조회수가 증가합니다.
+        """
+
+        post = self.get_object_and_check_permission(post_id)
+
+        """횟수 제한 없이 조회수 증가"""
+        if request:
+            post.views += 1
+            post.save()
+
+        if not post:
+            return Response({"error": "게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(PostsRecordSerializer(post).data, status=status.HTTP_200_OK)
 
     def put(self, request, post_id):
         """
