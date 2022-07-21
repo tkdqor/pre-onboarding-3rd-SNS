@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -32,10 +33,18 @@ class PostsView(APIView):
 
         게시글 목록을 조회합니다.
         목록에는 제목, 작성자, 해시태그, 작성일, 조회수가 포함됩니다.
+
+        쿼리 파라미터를 통해 입력한 키워드가 제목에 포함된 게시글 목록을 응답합니다.
         """
 
         posts = Post.objects.filter(is_deleted=False)
         serializer = self.serializer(posts, many=True)
+
+        """키워드 검색 기능"""
+        search_keyword = request.GET.get("search")
+        if search_keyword:
+            posts = Post.objects.filter(Q(title__icontains=search_keyword))
+            serializer = self.serializer(posts, many=True)
 
         if not posts:
             return Response({"error": "게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
