@@ -123,13 +123,41 @@ Lint
 <summary>🚀 API 호출 테스트 결과</summary>
 <div markdown="1">
 
-- 회원 생성
+- **회원가입**
+<img width="858" alt="image" src="https://user-images.githubusercontent.com/95380638/180384250-ef23a478-b480-4aa5-858c-3a4eef98af69.png">
 
+- **로그인**
+<img width="861" alt="image" src="https://user-images.githubusercontent.com/95380638/180384537-e37c08a2-5075-4e70-85c1-99d94478f115.png">
 
-- 회원 로그인
+- **유저가 좋아요를 누른 게시글 목록**
+<img width="856" alt="image" src="https://user-images.githubusercontent.com/95380638/180387449-01a6afb2-21ab-4de6-9143-8753daf81737.png">
 
+- **access token 및 refresh token 재발급**
+<img width="863" alt="image" src="https://user-images.githubusercontent.com/95380638/180384758-17c9de38-2630-4dda-8ca5-de27f56ead93.png">
 
-- 회원 로그아웃
+- **게시글 생성**
+<img width="854" alt="image" src="https://user-images.githubusercontent.com/95380638/180385321-bcda879b-9437-4125-a52a-e23266ca127e.png">
+
+- **게시글 목록 조회**
+<img width="876" alt="image" src="https://user-images.githubusercontent.com/95380638/180385517-b29a003c-0d15-4b34-9d18-d7e5188dd846.png">
+
+- **게시글 목록 조회 키워드 검색**
+<img width="879" alt="image" src="https://user-images.githubusercontent.com/95380638/180387138-e735de9e-de92-49a9-87c6-5b95978fb207.png">
+
+- **게시글 상세 보기**
+<img width="859" alt="image" src="https://user-images.githubusercontent.com/95380638/180385726-3d78d3f1-1541-4b31-ba09-ea3a9be98b07.png">
+
+- **게시글 수정**
+<img width="874" alt="image" src="https://user-images.githubusercontent.com/95380638/180386097-fdd37942-8334-47f1-a5c9-a0c3bd5f4050.png">
+
+- **게시글 삭제 및 복구**
+<img width="863" alt="image" src="https://user-images.githubusercontent.com/95380638/180386304-0b989a0a-1392-4ada-b498-cd7c3b3cdce3.png">
+<img width="860" alt="image" src="https://user-images.githubusercontent.com/95380638/180386595-9b9c2f20-f4e2-4d94-9c89-5c216e3b1c3b.png">
+
+- **특정 게시글 좋아요 및 좋아요 취소**
+<img width="869" alt="image" src="https://user-images.githubusercontent.com/95380638/180386814-49bd58a4-6070-456e-89b6-4b1db3dad829.png">
+<img width="860" alt="image" src="https://user-images.githubusercontent.com/95380638/180386850-aa50e48a-1fd0-4f24-a987-31613a26b997.png">
+
 
 
 </div>
