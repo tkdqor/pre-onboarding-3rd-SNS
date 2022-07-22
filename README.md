@@ -113,7 +113,7 @@ Lint
 <br>
 
 ## 🌟 API 명세서
-<img width="1176" alt="스크린샷 2022-07-15 오후 4 35 39" src="https://user-images.githubusercontent.com/76423946/179175389-367d73d6-b0dc-4131-9bec-20cf4f73fad8.png">
+<img width="991" alt="image" src="https://user-images.githubusercontent.com/95380638/180363355-6145f114-ebaf-4f88-ab88-26d969fff651.png">
 
 - ...  
 
@@ -124,35 +124,12 @@ Lint
 <div markdown="1">
 
 - 회원 생성
-<img width="994" alt="image" src="https://user-images.githubusercontent.com/89897944/179219478-9dfc392f-33b2-4ab1-b5c9-1cf079ee362d.png">
+
 
 - 회원 로그인
-<img width="1149" alt="image" src="https://user-images.githubusercontent.com/89897944/179219524-86991749-5838-4780-86cf-7a1dc88fc11f.png">
+
 
 - 회원 로그아웃
-<img width="977" alt="image" src="https://user-images.githubusercontent.com/89897944/179219994-549bd82a-d54d-4e0e-8277-36c4a972d9a4.png">
-
-- 회원 로그아웃( 토큰 유지 )
-<img width="891" alt="image" src="https://user-images.githubusercontent.com/89897944/179220054-cc50ccae-20da-4616-b40d-af7248da9198.png">
-
-- 전체 회원 조회 : admin 유저만 가능
-<img width="910" alt="image" src="https://user-images.githubusercontent.com/89897944/179220138-67f24c97-4b3a-433b-b9f9-f003041c8fec.png">
-<img width="987" alt="image" src="https://user-images.githubusercontent.com/89897944/179220324-65764b7d-f03e-4c8c-8f3e-b751a285a730.png">
-
-- 회원 단건 조회 : 회원정보와 해당 회원의 레이드 레코드가 같이 출력
-<img width="1082" alt="image" src="https://user-images.githubusercontent.com/89897944/179220461-15805b45-65ee-4eeb-b6ae-c29c13f2887d.png">
-
-- 보스레이드 상태 조회
-<img width="932" alt="image" src="https://user-images.githubusercontent.com/89897944/179220513-e4a4734c-5710-4d2f-8448-fbf11393c641.png">
-
-- 보스레이드 시작
-<img width="889" alt="image" src="https://user-images.githubusercontent.com/89897944/179220550-ca4c9498-d0aa-4440-8b93-d936cf01ee74.png">
-
-- 보스레이드 종료
-<img width="752" alt="스크린샷 2022-07-17 오후 10 14 31" src="https://user-images.githubusercontent.com/76423946/179400113-bad5850d-1fa1-4a40-ae5d-82426f0bb575.png">
-
-- 랭킹 확인
-<img width="1053" alt="image" src="https://user-images.githubusercontent.com/89897944/179220633-fa53af23-38b1-48ac-9eef-93664112f734.png">
 
 
 </div>
