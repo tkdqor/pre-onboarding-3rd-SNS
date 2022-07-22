@@ -3,8 +3,10 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from accounts.serializers import SignInSerializer, SignUpSerializer, UserTokenObtainPairSerializer
+from accounts.serializers import SignInSerializer, SignUpSerializer, UserLikesSerializer, UserTokenObtainPairSerializer
+from config.permissions import IsOwner
 
 """Create your views here."""
 
@@ -71,3 +73,33 @@ class SignInView(APIView):
             status=status.HTTP_200_OK,
         )
         return res
+
+
+# url : GET api/v1/users/likes
+class UserLikesView(APIView):
+    """
+    Assignee : 상백
+
+    GET : 로그인된 유저의 게시글 좋아요 목록을 응답하는 메서드입니다.
+    """
+
+    permission_classes = [IsOwner]
+    serializer = UserLikesSerializer
+
+    """JWT 인증방식 클래스 지정하기"""
+    authentication_classes = [JWTAuthentication]
+
+    def get(self, request):
+        """
+        Assignee : 상백
+
+        유저의 게시글 좋아요 목록을 조회합니다.
+        목록에는 게시글의 id와 제목이 포함됩니다.
+        """
+
+        likes = request.user.user_like.filter(is_deleted=False)
+        serializer = self.serializer(likes, many=True)
+
+        if not likes:
+            return Response({"error": "좋아요를 누른 게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
