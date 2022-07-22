@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+from posts.models import Post
+
 User = get_user_model()
 
 
@@ -50,3 +52,16 @@ class SignInSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("email", "password")
+
+
+class UserLikesSerializer(serializers.ModelSerializer):
+    """
+    Assignee : 상백
+
+    유저의 게시글 좋아요 목록을 응답하기 위한 시리얼라이저입니다.
+    게시글의 id와 제목을 보여줍니다.
+    """
+
+    class Meta:
+        model = Post
+        fields = ("id", "title")

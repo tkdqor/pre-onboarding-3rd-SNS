@@ -20,3 +20,4 @@ class Post(models.Model):
     is_deleted = models.BooleanField("삭제여부", default=False)
     hashtags = models.TextField("해시태그")
     views = models.PositiveIntegerField("조회수", default=0)
+    likes = models.ManyToManyField(to=User, blank=True, related_name="user_like")
