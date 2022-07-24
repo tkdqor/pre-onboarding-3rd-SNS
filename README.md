@@ -173,6 +173,11 @@ Lint
 **최종 모델링입니다. User 모델과 Post 모델은 1:N 관계로 설정했습니다.**    
 **좋아요 기능을 위해 User 모델과 Post 모델 중간 테이블이 설정되어 있습니다.**
 
+<br>
 
+## :open_file_folder: 어드민 페이지
+<img width="1435" alt="image" src="https://user-images.githubusercontent.com/95380638/180648350-05d245cd-c285-4847-b324-03d0ec0dfe9f.png">
+
+**django 어드민 페이지로 Post 모델의 데이터를 관리합니다.**
 
 
