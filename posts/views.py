@@ -1,4 +1,5 @@
-from django.db.models import Q
+from django.core.paginator import Paginator
+from django.db.models import Count, Q
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -13,7 +14,7 @@ from .models import Post
 """Create your views here."""
 
 
-# url : GET, POST api/v1/posts
+# # url : GET, POST api/v1/posts
 class PostsView(APIView):
     """
     Assignee : 상백
@@ -35,17 +36,55 @@ class PostsView(APIView):
         게시글 목록을 조회합니다.
         목록에는 제목, 작성자, 해시태그, 작성일, 좋아요 수, 조회수가 포함됩니다.
 
-        쿼리 파라미터를 통해 입력한 키워드가 제목에 포함된 게시글 목록을 응답합니다.
+        정렬 기능 : 쿼리 파라미터인 sort로 작성일, 좋아요 수, 조회수에 따라 각각 오름차순, 내림차순으로 정렬할 수 있습니다.
+        검색 기능 : 쿼리 파라미터인 search를 통해 입력한 키워드가 제목에 포함된 게시글 목록을 응답합니다.
+        필터링 기능 : 쿼리 파라미터인 hashtags로 입력된 해시태그 이름이 포함된 게시글 목록을 응답합니다. 해시태그 하나만 검색이 가능합니다.
+        페이지 기능 : 쿼리 파라미터인 page와 page_count로 현재 페이지와 1 페이지 당 게시글 수를 조정할 수 있습니다.
         """
 
         posts = Post.objects.filter(is_deleted=False)
         serializer = self.serializer(posts, many=True)
 
+        """게시글 정렬 기능"""
+        sort = request.GET.get("sort", "")
+        if sort == "asc":
+            posts = Post.objects.all().filter(is_deleted=False).order_by("created_at")
+        elif sort == "desc":
+            posts = Post.objects.all().filter(is_deleted=False).order_by("-created_at")
+        elif sort == "likes1":
+            posts = (
+                Post.objects.all()
+                .annotate(like=Count("likes__user_like"))
+                .filter(is_deleted=False)
+                .order_by("like", "id")
+            )
+        elif sort == "likes2":
+            posts = (
+                Post.objects.all()
+                .annotate(like=Count("likes__user_like"))
+                .filter(is_deleted=False)
+                .order_by("-like", "-id")
+            )
+        elif sort == "views1":
+            posts = Post.objects.all().filter(is_deleted=False).order_by("views", "id")
+        elif sort == "views2":
+            posts = Post.objects.all().filter(is_deleted=False).order_by("-views", "-id")
+
         """키워드 검색 기능"""
         search_keyword = request.GET.get("search")
         if search_keyword:
-            posts = Post.objects.filter(Q(title__icontains=search_keyword))
-            serializer = self.serializer(posts, many=True)
+            posts = Post.objects.all().filter(Q(is_deleted=False) & Q(title__icontains=search_keyword))
+
+        """필터링 기능"""
+        hashtags = request.GET.get("hashtags")
+        if hashtags:
+            posts = Post.objects.all().filter(Q(is_deleted=False) & Q(hashtags__icontains=hashtags))
+
+        """pagination 기능"""
+        page_number = self.request.query_params.get("page", 1)
+        page_size = self.request.query_params.get("page_count", 10)
+        paginator = Paginator(posts, page_size)
+        serializer = self.serializer(paginator.page(page_number), many=True, context={"request": request})
 
         if not posts:
             return Response({"error": "게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
@@ -133,6 +172,8 @@ class PostView(APIView):
 
         if not post:
             return Response({"error": "게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+        elif post.is_deleted == True:
+            return Response({"error": "해당 게시글은 삭제되었습니다."}, status=status.HTTP_404_NOT_FOUND)
         return Response(PostsRecordSerializer(post).data, status=status.HTTP_200_OK)
 
     def put(self, request, post_id):
