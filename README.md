@@ -115,7 +115,7 @@ Lint
 <br>
 
 ## 🌟 API 명세서
-<img width="991" alt="image" src="https://user-images.githubusercontent.com/95380638/180363355-6145f114-ebaf-4f88-ab88-26d969fff651.png">
+<img width="1195" alt="image" src="https://user-images.githubusercontent.com/95380638/180648653-4d568178-0e62-403d-82a9-b92dcf170aa6.png">
 
 - ...  
 
@@ -143,8 +143,17 @@ Lint
 - **게시글 목록 조회**
 <img width="876" alt="image" src="https://user-images.githubusercontent.com/95380638/180385517-b29a003c-0d15-4b34-9d18-d7e5188dd846.png">
 
-- **게시글 목록 조회 키워드 검색**
+- **게시글 목록 조회 정렬 기능**
+<img width="881" alt="image" src="https://user-images.githubusercontent.com/95380638/180648717-6ed1f14f-d60b-439b-8719-8ead712b38a3.png">
+
+- **게시글 목록 조회 키워드 검색 기능**
 <img width="879" alt="image" src="https://user-images.githubusercontent.com/95380638/180387138-e735de9e-de92-49a9-87c6-5b95978fb207.png">
+
+- **게시글 목록 조회 필터링 기능**
+<img width="875" alt="image" src="https://user-images.githubusercontent.com/95380638/180648796-9f656959-0046-42ce-b21f-97b04435f3cf.png">
+
+- **게시글 목록 조회 페이지 기능**
+<img width="895" alt="image" src="https://user-images.githubusercontent.com/95380638/180648848-0ed3ec0d-77aa-4782-b6d6-387de308f1bd.png">
 
 - **게시글 상세 보기**
 <img width="859" alt="image" src="https://user-images.githubusercontent.com/95380638/180385726-3d78d3f1-1541-4b31-ba09-ea3a9be98b07.png">
