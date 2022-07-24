@@ -12,6 +12,7 @@ flake8 = "*"
 pre-commit = "*"
 djangorestframework-simplejwt = "*"
 django-ipware = "*"
+django-filter = "*"
 
 [dev-packages]
 
