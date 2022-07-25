@@ -86,6 +86,14 @@
 </div>
 
 #### ➡️ 분석결과
+- 회원가입과 로그인의 권한은 누구나 접근할 수 있게 설정
+- 로그인 성공 시, 클라이언트에게 access token과 refresh token을 리턴해주기 위해 DRF simplejwt 라이브러리 이용
+- access token 만료 시, 재발급을 위해 DRF simplejwt의 TokenRefreshView 이용 / 재발급 시 refresh token도 갱신되게끔 settings 설정
+- 좋아요 기능을 위해 User 모델과 Post 모델 M:N관계로 설정
+- 게시글 목록 조회 기능 구현 시, 쿼리 파라미터에 따라 if문을 설정하고 django ORM의 filter, order_by, annotate 메서드 이용
+- 게시글 수정 및 삭제 권한을 작성자 본인에게만 접근 가능하게 하기 위해 BasePermission 클래스 오버라이딩 진행
+- 게시글 삭제의 경우, 복구를 위해 is_deleted 필드의 값을 Boolean으로 설정
+- 좋아요 api url의 경우, POST로 로그인된 유저가 중간 테이블에 있다면 좋아요 취소, 없다면 좋아요 성공으로 설정
 
 
 <br>
