@@ -144,7 +144,25 @@ Lint
 <img width="876" alt="image" src="https://user-images.githubusercontent.com/95380638/180385517-b29a003c-0d15-4b34-9d18-d7e5188dd846.png">
 
 - **게시글 목록 조회 정렬 기능**
-<img width="881" alt="image" src="https://user-images.githubusercontent.com/95380638/180648717-6ed1f14f-d60b-439b-8719-8ead712b38a3.png">
+
+- 작성일(오름차순)
+<img width="875" alt="image" src="https://user-images.githubusercontent.com/95380638/180674053-f18eff19-8142-405b-a1c1-adb6d5bfefa8.png">     
+
+- 작성일(내림차순)
+<img width="881" alt="image" src="https://user-images.githubusercontent.com/95380638/180674214-aff229c4-2665-42f7-8bcf-1f5f5fab0de4.png">
+
+- 좋아요 수(오름차순)
+<img width="881" alt="image" src="https://user-images.githubusercontent.com/95380638/180674340-6a817079-6c47-410f-80c9-56c5f501834d.png">
+
+- 좋아요 수(내림차순)
+<img width="887" alt="image" src="https://user-images.githubusercontent.com/95380638/180674434-2ebd6941-e67e-4ca7-842e-d71e931bfa25.png">
+
+- 조회수(오름차순)
+<img width="883" alt="image" src="https://user-images.githubusercontent.com/95380638/180674523-f06f51fe-7d63-4941-89fc-b71adbfbe4e2.png">
+
+- 조회수(내림차순)
+<img width="881" alt="image" src="https://user-images.githubusercontent.com/95380638/180674578-44f8a0a6-99b6-4139-9cc2-3c5d9b8d9d66.png">
+
 
 - **게시글 목록 조회 키워드 검색 기능**
 <img width="879" alt="image" src="https://user-images.githubusercontent.com/95380638/180387138-e735de9e-de92-49a9-87c6-5b95978fb207.png">
