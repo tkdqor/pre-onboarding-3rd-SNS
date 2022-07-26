@@ -14,8 +14,6 @@ from accounts.serializers import (
 )
 from config.permissions import IsOwner
 
-"""Create your views here."""
-
 
 # url : POST api/v1/users/signup
 class SignUpView(APIView):

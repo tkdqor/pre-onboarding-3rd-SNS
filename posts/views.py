@@ -11,8 +11,6 @@ from posts.serializers import PostsRecordSerializer, PostsSerializer
 
 from .models import Post
 
-"""Create your views here."""
-
 
 # # url : GET, POST api/v1/posts
 class PostsView(APIView):
