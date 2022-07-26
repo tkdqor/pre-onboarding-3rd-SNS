@@ -65,3 +65,16 @@ class UserLikesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ("id", "title")
+
+
+class UserTrashSerializer(serializers.ModelSerializer):
+    """
+    Assignee : 상백
+
+    유저의 게시글 삭제 목록을 응답하기 위한 시리얼라이저입니다.
+    게시글의 id와 제목, 삭제여부를 보여줍니다.
+    """
+
+    class Meta:
+        model = Post
+        fields = ("id", "title", "is_deleted")

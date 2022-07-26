@@ -5,7 +5,13 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
-from accounts.serializers import SignInSerializer, SignUpSerializer, UserLikesSerializer, UserTokenObtainPairSerializer
+from accounts.serializers import (
+    SignInSerializer,
+    SignUpSerializer,
+    UserLikesSerializer,
+    UserTokenObtainPairSerializer,
+    UserTrashSerializer,
+)
 from config.permissions import IsOwner
 
 """Create your views here."""
@@ -102,4 +108,31 @@ class UserLikesView(APIView):
 
         if not likes:
             return Response({"error": "좋아요를 누른 게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# url : GET api/v1/users/trash
+class UserTrashView(APIView):
+    """
+    Assignee : 상백
+
+    GET : 로그인된 유저의 게시글 삭제 목록을 응답하는 메서드입니다.
+    """
+
+    permission_classes = [IsOwner]
+    serializer = UserTrashSerializer
+
+    def get(self, request):
+        """
+        Assignee : 상백
+
+        유저의 게시글 삭제 목록을 조회합니다.
+        목록에는 게시글의 id와 제목, 삭제여부가 포함됩니다.
+        """
+
+        trash = request.user.user_post.filter(is_deleted=True)
+        serializer = self.serializer(trash, many=True)
+
+        if not trash:
+            return Response({"error": "삭제된 게시글이 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
         return Response(serializer.data, status=status.HTTP_200_OK)
