@@ -123,11 +123,12 @@ Lint
 <br>
 
 ## 🌟 API 명세서
-<img width="1195" alt="image" src="https://user-images.githubusercontent.com/95380638/180648653-4d568178-0e62-403d-82a9-b92dcf170aa6.png">
+<img width="1181" alt="image" src="https://user-images.githubusercontent.com/95380638/180913976-7b45f04a-dd2b-4d88-bc4c-0d5bd7b44e95.png">
 
 - 회원가입은 email과 password를 입력받고 email에 대한 유효성 검사 후 진행합니다.
 - 로그인은 회원가입시 입력한 email과 password를 통해서 진행하고 성공 시 access token과 refresh token를 리턴해줍니다.
 - 유저가 좋아요를 누른 게시글 목록은 로그인된 유저가 좋아요를 누른 게시글의 id와 제목을 응답해줍니다.
+- 유저가 삭제한 게시글 목록은 로그인된 유저가 삭제한 게시글의 id와 제목, 삭제여부를 응답해줍니다.
 - access token 및 refresh token 재발급은 refresh token 입력이 필요하고 simplejwt의 settings 설정으로 요청 시 access token과 refresh token 모두 갱신해줍니다.
 - 게시글 생성은 제목, 내용, 해시태그 정보를 필수로 입력해야 합니다.
 - 게시글 목록 조회는 제목, 작성자, 해시태그, 작성일, 좋아요 수, 조회수가 포함되며 쿼리 파라미터인 sort, search, hashtags, page&page_count에 따라 각각 정렬, 검색, 필터링, 페이지 기능을 수행합니다.
@@ -155,6 +156,9 @@ Lint
 
 - **유저가 좋아요를 누른 게시글 목록**
 <img width="856" alt="image" src="https://user-images.githubusercontent.com/95380638/180387449-01a6afb2-21ab-4de6-9143-8753daf81737.png">
+
+- **유저가 삭제한 게시글 목록**
+<img width="872" alt="image" src="https://user-images.githubusercontent.com/95380638/180914109-4713b678-dc10-4faf-8832-6d0192f2af35.png">
 
 - **access token 및 refresh token 재발급**
 <img width="863" alt="image" src="https://user-images.githubusercontent.com/95380638/180384758-17c9de38-2630-4dda-8ca5-de27f56ead93.png">
