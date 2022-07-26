@@ -8,14 +8,28 @@
 - 사용자들은 해당 서비스에서 회원가입 및 로그인 이후 본인이 좋아하는 글을 생성하고 다른 사용자들의 글을 확인할 수 있습니다.
 - 해시태그로 해당 글의 주제나 단어, 작가를 기재한다면 다른 사용자들로부터 검색이 용이해집니다.
 
-📌 **개발기간** : 2022.07.20 ~ 2022.07.26
+<br>
 
+📌 **1차 개발기간** : 2022.07.20 ~ 2022.07.26
+
+<br>
+
+📌 **고도화 예정 Issues** 
+   - 게시글 목록 4가지 기능 동시에 적용시키기
+   - Redis를 이용해 게시글 목록 정보 캐시로 가져오기
+   - Docker를 이용해서 배포하기
+   - 해시태그 모델을 포함한 모델링 재구성
 <br>
 
 ## 🛠 사용 기술
 - API<br>
 ![python badge](https://img.shields.io/badge/Python-3.9-%233776AB?&logo=python&logoColor=white)
 ![django badge](https://img.shields.io/badge/Django-4.0.6-%23092E20?&logo=Django&logoColor=white)
+![DRF badge](https://img.shields.io/badge/DRF-%23092E20?&logo=DRF&logoColor=white)
+![DRF_SimpleJWT badge](https://img.shields.io/badge/DRF_SimpleJWT-%23092E20?&logo=DRF_SimpleJWT&logoColor=white)
+
+- DB<br>
+![SQLite badge](https://img.shields.io/badge/SQLite-%23092E20?&logo=SQLite&logoColor=white)
 
 - ETC<br>
   <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=Git&logoColor=white"/>
