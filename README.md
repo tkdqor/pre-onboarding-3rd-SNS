@@ -297,3 +297,26 @@ Lint
   - snake case
 - Variables
   - snake case
+
+<br>
+
+## 🧑‍💻 브랜치 전략
+- main : 최종적으로 문제가 없는 기능을 포함하는 브랜치
+- feature : issue에 부여한 기능을 개발하는 브랜치로 기능 개발이 완료되면 main 브랜치에 Merge 진행
+
+<br>
+
+## 📝 주석 처리
+```python
+# url : GET, POST api/v1/posts
+class PostsView(APIView):
+    """
+    Assignee : 상백
+
+    GET : 게시글 목록을 조회하는 메서드입니다.
+    POST : 게시글을 생성하는 메서드입니다.
+    """
+    ...
+```
+- class 하단에 해당 class에 대한 설명을 여러 줄 주석으로 기재
+- API에 대한 코드라면 한 줄 주석으로 API URL 기재
