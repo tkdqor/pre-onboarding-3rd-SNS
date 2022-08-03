@@ -4,7 +4,6 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from config.permissions import IsOwner
 from posts.serializers import PostsRecordSerializer, PostsSerializer
@@ -24,9 +23,6 @@ class PostsView(APIView):
     permission_classes = [IsOwner]
     serializer = PostsSerializer
 
-    """JWT 인증방식 클래스 지정하기"""
-    authentication_classes = [JWTAuthentication]
-
     def get(self, request):
         """
         Assignee : 상백
@@ -43,40 +39,30 @@ class PostsView(APIView):
         posts = Post.objects.filter(is_deleted=False)
         serializer = self.serializer(posts, many=True)
 
-        """게시글 정렬 기능"""
-        sort = request.GET.get("sort", "")
-        if sort == "asc":
-            posts = Post.objects.all().filter(is_deleted=False).order_by("created_at")
-        elif sort == "desc":
-            posts = Post.objects.all().filter(is_deleted=False).order_by("-created_at")
-        elif sort == "likes1":
-            posts = (
-                Post.objects.all()
-                .annotate(like=Count("likes__user_like"))
-                .filter(is_deleted=False)
-                .order_by("like", "id")
-            )
-        elif sort == "likes2":
-            posts = (
-                Post.objects.all()
-                .annotate(like=Count("likes__user_like"))
-                .filter(is_deleted=False)
-                .order_by("-like", "-id")
-            )
-        elif sort == "views1":
-            posts = Post.objects.all().filter(is_deleted=False).order_by("views", "id")
-        elif sort == "views2":
-            posts = Post.objects.all().filter(is_deleted=False).order_by("-views", "-id")
-
         """키워드 검색 기능"""
         search_keyword = request.GET.get("search")
         if search_keyword:
-            posts = Post.objects.all().filter(Q(is_deleted=False) & Q(title__icontains=search_keyword))
+            posts = posts.filter(Q(title__icontains=search_keyword))
 
         """필터링 기능"""
         hashtags = request.GET.get("hashtags")
         if hashtags:
-            posts = Post.objects.all().filter(Q(is_deleted=False) & Q(hashtags__icontains=hashtags))
+            posts = posts.filter(Q(hashtags__icontains=hashtags))
+
+        """게시글 정렬 기능"""
+        sort = request.GET.get("sort", "")
+        if sort == "asc":
+            posts = posts.filter(is_deleted=False).order_by("created_at")
+        elif sort == "desc":
+            posts = posts.filter(is_deleted=False).order_by("-created_at")
+        elif sort == "likes1":
+            posts = posts.annotate(like=Count("likes__user_like")).order_by("like", "id")
+        elif sort == "likes2":
+            posts = posts.annotate(like=Count("likes__user_like")).order_by("-like", "-id")
+        elif sort == "views1":
+            posts = posts.order_by("views", "id")
+        elif sort == "views2":
+            posts = posts.order_by("-views", "-id")
 
         """pagination 기능"""
         page_number = self.request.query_params.get("page", 1)
@@ -128,9 +114,6 @@ class PostView(APIView):
 
     permission_classes = [IsOwner]
     serializer = PostsRecordSerializer
-
-    """JWT 인증방식 클래스 지정하기"""
-    authentication_classes = [JWTAuthentication]
 
     def get_object_and_check_permission(self, obj_id):
         """
@@ -238,9 +221,6 @@ class PostLikeView(APIView):
 
     permission_classes = [IsAuthenticated]
     serializer = PostsRecordSerializer
-
-    """JWT 인증방식 클래스 지정하기"""
-    authentication_classes = [JWTAuthentication]
 
     def get_object_and_check_permission(self, obj_id):
         """

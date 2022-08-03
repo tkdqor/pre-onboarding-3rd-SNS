@@ -3,7 +3,6 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from accounts.serializers import (
     SignInSerializer,
@@ -89,9 +88,6 @@ class UserLikesView(APIView):
 
     permission_classes = [IsOwner]
     serializer = UserLikesSerializer
-
-    """JWT 인증방식 클래스 지정하기"""
-    authentication_classes = [JWTAuthentication]
 
     def get(self, request):
         """
