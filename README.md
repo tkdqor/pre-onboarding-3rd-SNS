@@ -292,7 +292,7 @@ Lint
 - Class
   - Pascal case
 - Model
-  - snake case
+  - Pascal case
 - Function
   - snake case
 - Variables
